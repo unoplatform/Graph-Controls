@@ -31,12 +31,15 @@
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS'  or '$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="Uno.UI" Version="1.46.0-dev.1991" />
-    <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI" Version="5.1.0-build.200.gf9c311b069" />
+    <PackageReference Include="System.Buffers" Version="4.5.0.0" />
+    <PackageReference Include="Uno.UI" Version="1.46.230-dev.2723" />
+    <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI" Version="6.0.0-build.4.g02d22c3964" />
+    <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI.Controls" Version="6.0.0-build.4.g02d22c3964" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'uap10.0' or '$(TargetFramework)' == 'uap10.0.16299' ">
-    <PackageReference Include="Microsoft.Toolkit.Uwp.UI" Version="6.0.0-build.12" />
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI" Version="6.0.0-build.26" />
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls" Version="6.0.0-build.26" />
   </ItemGroup>
  
   <ItemGroup>

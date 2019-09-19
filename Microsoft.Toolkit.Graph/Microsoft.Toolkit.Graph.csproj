@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>$(TargetFrameworksOverride)</TargetFrameworks>
-    <Title>Windows Community Toolkit .NET Standard Services</Title>
+    <Title>Windows Community Toolkit .NET Standard Graph Services</Title>
+    <PackageId>Uno.Microsoft.Toolkit.Graph</PackageId>
     <Description>
       This package includes .NET Standard code helpers such as:
       - GraphExtensions: Helpers for common tasks related to the Microsoft Graph used by the Microsoft.Toolkit.Graph.Controls.
@@ -26,6 +27,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Graph.Beta" Version="0.7.0-preview" />
     <PackageReference Include="Microsoft.Graph.Auth" Version="1.0.0-preview.1" />
-    <PackageReference Include="Microsoft.Toolkit" Version="6.0.0-build.12" />
+    <PackageReference Include="Uno.Microsoft.Toolkit" Version="6.0.0-build.4.g02d22c3964" />
   </ItemGroup>
 </Project>
