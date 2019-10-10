@@ -2,7 +2,7 @@
 
 This is a sub-repo for the [Windows Community Toolkit](https://aka.ms/wct) focused on [Microsoft Graph](https://developer.microsoft.com/en-us/graph/) providing a set of Helpers and Controls for development on Windows 10 with .NET.
 
-This new library replaces the `Microsoft.Toolkit.Uwp.UI.Controls.Graph` package; however, it is not backwards compatible nor does it provide all the same features at this time.
+This new library replaces the `Microsoft.Toolkit.Uwp.UI.Controls.Graph` package; however, it is not backward compatible nor does it provide all the same features at this time.
 
 If you need similar controls for the Web, please use the [Microsoft Graph Toolkit](https://aka.ms/mgt).
 
@@ -19,7 +19,7 @@ If you need similar controls for the Web, please use the [Microsoft Graph Toolki
 
 Before using controls that access [Microsoft Graph](https://graph.microsoft.com), you will need to [register your application](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app) to get a **ClientID**.
 
-> After finishing the initial registration page, you will also need to add an additional redirect URI. Clcik on "Add a Redirect URI" and check the `https://login.microsoftonline.com/common/oauth2/nativeclient` checkbox on that page. Then click "Save".
+> After finishing the initial registration page, you will also need to add an additional redirect URI. Click on "Add a Redirect URI" and check the `https://login.microsoftonline.com/common/oauth2/nativeclient` checkbox on that page. Then click "Save".
 
 ### Android Quick Start
 
