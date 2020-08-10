@@ -7,6 +7,7 @@ using Microsoft.Identity.Client;
 using Microsoft.Toolkit.Graph.Providers;
 using System.Reflection;
 using System.Threading.Tasks;
+using Uno.UI.MSAL;
 
 namespace Microsoft.Toolkit.Graph.Providers
 {
@@ -19,9 +20,7 @@ namespace Microsoft.Toolkit.Graph.Providers
                 .WithRedirectUri(redirectUri)
                 .WithClientName(ProviderManager.ClientName)
                 .WithClientVersion(Assembly.GetExecutingAssembly().GetName().Version.ToString())
-#if __ANDROID__
-                .WithParentActivityOrWindow(() => Uno.UI.ContextHelper.Current as Android.App.Activity)
-#endif
+                .WithUnoHelpers()
                 .Build();
 
             if (scopes == null)
