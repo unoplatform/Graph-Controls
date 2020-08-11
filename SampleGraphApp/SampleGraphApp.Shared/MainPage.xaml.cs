@@ -38,7 +38,9 @@ namespace SampleGraphApp
         {
             this.InitializeComponent();
 
-            ProviderManager.Instance.ProviderUpdated += MainPage_ProviderUpdated;            
+            ProviderManager.Instance.ProviderUpdated += MainPage_ProviderUpdated;
+
+            MainPage_ProviderUpdated(null, null);
         }
 
         private void MainPage_ProviderUpdated(object sender, ProviderUpdatedEventArgs e)
