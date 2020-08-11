@@ -15,6 +15,7 @@
     <PackageTags>UWP Toolkit Windows Controls MSAL Microsoft Graph AadLogin ProfileCard Person PeoplePicker Login</PackageTags>
     <SignAssembly>false</SignAssembly>
     <GenerateLibraryLayout>true</GenerateLibraryLayout>
+    <LangVersion>8.0</LangVersion>
     <Configurations>Debug;Release;CI</Configurations>
     <Platforms>AnyCPU;ARM;ARM64;x64;x86</Platforms>
     <NoWarn>CS1701;1702;Uno0001;NU1701</NoWarn>
@@ -35,10 +36,12 @@
   <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS'  or '$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="Uno.UI" Version="3.0.0-dev.1515" />
     <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI" Version="6.1.0-build.191.gc988bdd4ff" />
+	<PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI.Controls" Version="6.1.0-build.191.gc988bdd4ff" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'uap10.0' or '$(TargetFramework)' == 'uap10.0.17763' ">
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI" Version="6.1.0" />
+	<PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls" Version="6.1.0" />
   </ItemGroup>
  
   <ItemGroup>

@@ -2,12 +2,12 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using Microsoft.Graph;
+using Microsoft.Graph.Extensions;
 using Microsoft.Toolkit.Graph.Providers;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
+using System;
+using System.Text.RegularExpressions;
 using Windows.UI.Xaml.Controls;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace SampleGraphApp
 {
@@ -16,21 +16,44 @@ namespace SampleGraphApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        //// Workaround for https://github.com/microsoft/microsoft-ui-xaml/issues/2407
+        public DateTime Today => DateTimeOffset.Now.Date.ToUniversalTime();
+
+        //// Workaround for https://github.com/microsoft/microsoft-ui-xaml/issues/2407
+        public DateTime ThreeDaysFromNow => Today.AddDays(3);
+
         public MainPage()
         {
-            // Register Client ID Instructions: https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app
-            var ClientId = "CLIENT_ID_HERE";
-            _ = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
-            {
-                ProviderManager.Instance.GlobalProvider = await QuickCreate.CreateMsalProviderAsync(
-                    ClientId,
-#if __ANDROID__
-                    $"msal{ClientId}://auth", // Need to change redirectUri on Android for protocol registration from AndroidManifest.xml, ClientId needs to be updated there as well to match above.
-#endif
-                    scopes: new string[] { "user.read", "user.readbasic.all", "people.read" });
-            });
-
             this.InitializeComponent();
+        }
+
+        public static string ToLocalTime(DateTimeTimeZone value)
+        {
+            //// Workaround for https://github.com/microsoft/microsoft-ui-xaml/issues/2407
+            return value.ToDateTimeOffset().LocalDateTime.ToString("g");
+        }
+
+        public static string ToLocalTime(DateTimeOffset? value)
+        {
+            //// Workaround for https://github.com/microsoft/microsoft-ui-xaml/issues/2654
+            return value?.LocalDateTime.ToString("g");
+        }
+
+        public static string RemoveWhitespace(string value)
+        {
+            //// Workaround for https://github.com/microsoft/microsoft-ui-xaml/issues/2654
+            return Regex.Replace(value, @"\t|\r|\n", " ");
+        }
+
+        public static bool IsTaskCompleted(int? percentCompleted)
+        {
+            return percentCompleted == 100;
+        }
+
+        public static IBaseRequestBuilder GetTeamsChannelMessagesBuilder(string team, string channel)
+        {
+            //// Workaround for https://github.com/microsoft/microsoft-ui-xaml/issues/3064
+            return ProviderManager.Instance.GlobalProvider.Graph.Teams[team].Channels[channel].Messages;
         }
     }
 }

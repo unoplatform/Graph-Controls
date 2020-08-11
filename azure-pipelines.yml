@@ -1,12 +1,13 @@
 # Control which branches get CI triggers (defaults to all branches if this parameter is not set)
 trigger:
-- master
-- rel/*
+  - master
+  - rel/*
 
 # Specify the target branches for pull request builds
 pr:
-- master
-- rel/*
+  - master
+  - rel/*
 
 jobs:
+- template: azure-windows-pipeline.yml
 - template: azure-windows-pipeline.yml

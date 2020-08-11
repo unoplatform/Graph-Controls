@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
+using System.ComponentModel;
 using Microsoft.Graph;
 using Microsoft.Identity.Client;
 using Microsoft.Toolkit.Helpers;
@@ -17,22 +18,25 @@ namespace Microsoft.Toolkit.Graph.Providers
     /// ProviderManager.Instance.GlobalProvider = await MsalProvider.CreateAsync(...);
     /// </code>
     /// </example>
-    public class ProviderManager
+    public class ProviderManager : INotifyPropertyChanged
     {
         /// <summary>
         /// Gets the name of the toolkit client to identify self in Graph calls.
         /// </summary>
-        public static readonly string ClientName = "Windows Community Toolkit" + ThisAssembly.AssemblyVersion;
+        public static readonly string ClientName = "wct/" + ThisAssembly.AssemblyVersion;
 
         /// <summary>
-        /// Gets the instance of the GlobalProvider
+        /// Gets the instance of the GlobalProvider.
         /// </summary>
-        public static ProviderManager Instance => Singleton<ProviderManager>.Instance;
+        public static ProviderManager Instance { get; } = new ProviderManager();
 
         /// <summary>
         /// Event called when the <see cref="IProvider"/> changes.
         /// </summary>
         public event EventHandler<ProviderUpdatedEventArgs> ProviderUpdated;
+
+        /// <inheritdoc/>
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private IProvider _provider;
 
@@ -61,7 +65,14 @@ namespace Microsoft.Toolkit.Graph.Providers
                 }
 
                 ProviderUpdated?.Invoke(this, new ProviderUpdatedEventArgs(ProviderManagerChangedState.ProviderChanged));
+
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(GlobalProvider)));
             }
+        }
+
+        private ProviderManager()
+        {
+            // Use Instance
         }
 
         private void ProviderStateChanged(object sender, StateChangedEventArgs e)

@@ -11,8 +11,6 @@ If you need similar controls for the Web, please use the [Microsoft Graph Toolki
 * Windows 10 18362 (🚧 TODO: Check Lower SDKs)
 * Android via [Uno.Graph-Controls](https://aka.ms/wgt-uno) use `Uno.Microsoft.Graph.Controls` package.
 * 🚧 Coming Soon 🚧
-  * PeoplePicker control
-  * XAML Islands Sample
   * iOS (Waiting on [MSAL#1378](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/pull/1378) merge should be 4.4.0?)
 
 ## <a name="documentation"></a> Getting Started
