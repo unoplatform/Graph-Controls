@@ -14,7 +14,7 @@ namespace Microsoft.Toolkit.Graph.Controls
     /// <summary>
     /// XAML Proxy for <see cref="Microsoft.Graph.QueryOption"/>.
     /// </summary>
-    public sealed class QueryOption
+    public partial class QueryOption : DependencyObject
     {
         /// <inheritdoc cref="Microsoft.Graph.Option.Name"/>
         public string Name { get; set; }

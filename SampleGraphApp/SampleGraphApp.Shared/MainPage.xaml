@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wgt="using:Microsoft.Toolkit.Graph.Controls"
     xmlns:graph="using:Microsoft.Graph"
-    xmlns:global="using:System.Globalization"
+    xmlns:glob="using:System.Globalization"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:providers="using:Microsoft.Toolkit.Graph.Providers"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
@@ -79,14 +79,14 @@
                             <StackPanel>
                                 <TextBlock>The following example shows the `Me.CalendarView` API.</TextBlock>
                                 <TextBlock Margin="0,8,0,0" FontWeight="Bold">My Upcoming Calendar Events:</TextBlock>
-                                <wgt:GraphPresenter RequestBuilder="{x:Bind providers:ProviderManager.Instance.GlobalProvider.Graph.Me.CalendarView, Mode=OneWay}"
+                                <wgt:GraphPresenter RequestBuilder="{x:Bind Graph.Me.CalendarView, Mode=OneWay}"
                                     OrderBy="start/dateTime"
                                     ResponseType="graph:Event"
                                     IsCollection="True">
                                     <wgt:GraphPresenter.QueryOptions>
                                         <!-- Need to create separate Properties as multiple functions not supported in x:Bind see https://github.com/microsoft/microsoft-ui-xaml/issues/2407 -->
-                                        <wgt:QueryOption Name="startDateTime" Value="{x:Bind Today.ToString('o', global:CultureInfo.InvariantCulture)}"/>
-                                        <wgt:QueryOption Name="endDateTime" Value="{x:Bind ThreeDaysFromNow.ToString('o', global:CultureInfo.InvariantCulture)}"/>
+                                        <wgt:QueryOption Name="startDateTime" Value="{x:Bind Today.ToString('o', glob:CultureInfo.InvariantCulture)}"/>
+                                        <wgt:QueryOption Name="endDateTime" Value="{x:Bind ThreeDaysFromNow.ToString('o', glob:CultureInfo.InvariantCulture)}"/>
                                     </wgt:GraphPresenter.QueryOptions>
                                     <wgt:GraphPresenter.ContentTemplate>
                                         <DataTemplate>
@@ -128,7 +128,7 @@
                             <StackPanel>
                                 <TextBlock>The following example shows the `Me.Messages` API for getting a user's inbox mail messages.</TextBlock>
                                 <TextBlock Margin="0,8,0,0" FontWeight="Bold">My Messages:</TextBlock>
-                                <wgt:GraphPresenter RequestBuilder="{x:Bind providers:ProviderManager.Instance.GlobalProvider.Graph.Me.Messages, Mode=OneWay}"
+                                <wgt:GraphPresenter RequestBuilder="{x:Bind Graph.Me.Messages, Mode=OneWay}"
                                     ResponseType="graph:Message"
                                     IsCollection="True">
                                     <wgt:GraphPresenter.ContentTemplate>
@@ -162,7 +162,7 @@
                             <StackPanel>
                                 <TextBlock>The following example shows the `Me.Planner.Tasks` API for getting a user's tasks.</TextBlock>
                                 <TextBlock Margin="0,8,0,0" FontWeight="Bold">My Tasks:</TextBlock>
-                                <wgt:GraphPresenter RequestBuilder="{x:Bind providers:ProviderManager.Instance.GlobalProvider.Graph.Me.Planner.Tasks, Mode=OneWay}"
+                                <wgt:GraphPresenter RequestBuilder="{x:Bind Graph.Me.Planner.Tasks, Mode=OneWay}"
                                     ResponseType="graph:PlannerTask"
                                     IsCollection="True">
                                     <wgt:GraphPresenter.ContentTemplate>
