@@ -10,4 +10,3 @@ pr:
 
 jobs:
 - template: azure-windows-pipeline.yml
-- template: azure-windows-pipeline.yml
